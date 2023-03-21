@@ -1,0 +1,16 @@
+name: Java CI
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 19
+        uses: actions/setup-java@v2
+        with:
+          java-version: '19'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: cd Lab1 && mvn --batch-mode --update-snapshots package
